@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>More Projects - Onyedikachi Nzute</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="sticky">
+    <div class="container header-container">
+      <div class="header-left">
+        <img src="images/kachi.jpg" alt="Profile" />
+        <h1>Onyedikachi Nzute</h1>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#contact">Contact</a>
+        <div class="dropdown">
+          <button class="dropbtn">☰</button>
+          <div class="dropdown-content">
+            <button id="theme-toggle">🌙</button>
+            <a href="index.html#resume">Resume</a>
+            <a href="moreprojects.html">More Projects</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>More Projects</h2>
+      <p>Here are some additional projects that showcase my skillset in web development, Python programming, and UI/UX design. Each one explores different problem-solving approaches and demonstrates attention to user experience, responsiveness, and clean code practices.</p>
+    </section>
+
+    <section class="project-grid">
+      <div class="project-card" data-popup="popup1">
+        <h3>Clinic Appointment App</h3>
+        <p>Built a mobile UI/UX prototype for a university clinic to reduce queues and automate scheduling.</p>
+      </div>
+      <div class="project-card" data-popup="popup2">
+        <h3>Math Blaster Game</h3>
+        <p>Developed a Python-based math game with Tkinter to help kids sharpen arithmetic skills interactively.</p>
+      </div>
+      <div class="project-card" data-popup="popup3">
+        <h3>Movie Ticket Booking System</h3>
+        <p>Created a full-featured movie ticket app with admin/user dashboards and PostgreSQL database integration.</p>
+      </div>
+      <div class="project-card" data-popup="popup4">
+        <h3>Study Guide Mobile App</h3>
+        <p>Designed a learning app flow for secondary school exam prep with a user persona and Figma mockups.</p>
+      </div>
+      <div class="project-card" data-popup="popup5">
+        <h3>Portfolio Website</h3>
+        <p>Responsive personal website with theme toggle, project previews, and a modern, minimal design.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- POPUPS -->
+  <div id="popup1" class="popup-overlay">
+    <div class="popup-content">
+      <button class="close-popup">✖</button>
+      <h3>Clinic Appointment App</h3>
+      <p>This app was designed to streamline the appointment process at Pan-Atlantic University’s clinic. Features include appointment booking, time slot allocation, user dashboard, and feedback forms. It reduces wait times significantly by integrating calendar-based scheduling with backend queue optimization.</p>
+    </div>
+  </div>
+
+  <div id="popup2" class="popup-overlay">
+    <div class="popup-content">
+      <button class="close-popup">✖</button>
+      <h3>Math Blaster Game</h3>
+      <p>A simple yet engaging educational game that challenges users with timed arithmetic problems. Designed in Tkinter with animated visuals, scoring system, and dynamic difficulty. Great for both kids and adults looking to improve quick math skills.</p>
+    </div>
+  </div>
+
+  <div id="popup3" class="popup-overlay">
+    <div class="popup-content">
+      <button class="close-popup">✖</button>
+      <h3>Movie Ticket Booking System</h3>
+      <p>A full Python GUI app that lets users book seats for movies, view showtimes, and generate receipts. The admin dashboard enables adding/deleting movies and managing seat occupancy. All data is stored in PostgreSQL with CRUD operations implemented efficiently.</p>
+    </div>
+  </div>
+
+  <div id="popup4" class="popup-overlay">
+    <div class="popup-content">
+      <button class="close-popup">✖</button>
+      <h3>Study Guide Mobile App</h3>
+      <p>This Figma-designed app helps secondary school students prep for exams through structured lessons, progress tracking, and a clean mobile interface. The user persona was tailored to Nigerian students between 15-19, factoring data usage and ease of access.</p>
+    </div>
+  </div>
+
+  <div id="popup5" class="popup-overlay">
+    <div class="popup-content">
+      <button class="close-popup">✖</button>
+      <h3>Portfolio Website</h3>
+      <p>This website (yes, the one you're on!) was coded from scratch with HTML, CSS, and JavaScript. It includes a dark mode toggle, responsive layout, mobile navigation, and project previews. Built with scalability in mind and performance optimized for fast loading.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Onyedikachi Nzute. All rights reserved.</p>
+  </footer>
+
+  <script src="theme-toggle.js"></script>
+  <script>
+    document.querySelectorAll(".project-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const id = card.dataset.popup;
+        document.getElementById(id).style.display = "flex";
+      });
+    });
+
+    document.querySelectorAll(".close-popup").forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.closest(".popup-overlay").style.display = "none";
+      });
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target.classList.contains("popup-overlay")) {
+        e.target.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

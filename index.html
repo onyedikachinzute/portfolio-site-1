@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onyedikachi Nzute | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="sticky">
+    <div class="container header-container">
+      <div class="header-left">
+        <img src="images/kachi.jpg" alt="Profile" />
+        <h1>Onyedikachi Nzute</h1>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#contact">Contact</a>
+        <div class="dropdown">
+          <button class="dropbtn">☰</button>
+          <div class="dropdown-content">
+            <button id="theme-toggle">🌙</button>
+            <a href="index.html#resume">Resume</a>
+            <a href="moreprojects.html">More Projects</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container" id="briefintro">
+      <h2>Welcome to My Digital Space</h2>
+      <p>I'm a Computer Science student passionate about web development, UI/UX design, and building efficient solutions for real-world problems. Explore my projects and get to know more about my journey.</p>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="container about-container">
+      <img src="images/kachi2.jpg" alt="Profile" class="profile-pic">
+      <div>
+        <h2>About Me</h2>
+        <p>Hi, I'm Onyedikachi Nzute, a developer with a deep interest in building sleek and responsive web applications. With experience ranging from desktop applications to full-stack web platforms, I constantly seek new ways to challenge myself and grow in this ever-evolving field.</p>
+        <p>I'm currently focused on improving my JavaScript and backend development skills. I also enjoy UI design and making sure users get a pleasant and intuitive experience when using apps I've worked on.</p>
+        <p>Technologies I work with include HTML, CSS, JavaScript, Python, and PostgreSQL. I'm open to collaborating on creative and impactful projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Movie Ticketing System</h3>
+          <p>A fully functioning GUI and database-backed system for booking movie tickets, viewing schedules, and managing users/admins.</p>
+        </div>
+        <div class="project-card">
+          <h3>Math Blaster</h3>
+          <p>An educational game to test and improve users' math speed. Created with Python and Tkinter with a simple GUI.</p>
+        </div>
+        <div class="project-card">
+          <h3>Clinic Booking App</h3>
+          <p>A Tkinter-based desktop application built for Pan-Atlantic University to manage clinic appointments and reduce queues.</p>
+        </div>
+      </div>
+      <a class="view-more" href="moreprojects.html">View More Projects →</a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p>If you'd like to collaborate or just say hi, feel free to reach out.</p>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required><br><br>
+        <input type="email" placeholder="Your Email" required><br><br>
+        <textarea placeholder="Your Message" required></textarea> <br><br>
+        <button type="submit">Send Message</button>
+      </form> <br>
+      <div class="social-links">
+        <a href="#">LinkedIn</a><br>
+        <a href="#">GitHub</a><br>
+        <a href="#">Twitter</a><br>
+      </div>
+    </div>
+  </section>
+
+  <script src="theme-toggle.js"></script>
+</body>
+
+</html>

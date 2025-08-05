@@ -1,0 +1,5 @@
+1. Make a More Projects Page
+2. Add the basic overviews of the existing projects
+3. Add the GitHub links to the projects
+4. Design the page to look similar to the homepage
+5. Add JavaScript to automate and make the system more fluid
