@@ -72,7 +72,6 @@ If you want to clone and customize this portfolio:
 3. Add project filtering and modal previews.
 4. Animate section reveals with ScrollReveal.js or Framer Motion.
 
-
 ## 🧑🏽Author
 Onyedikachi Nzute
 📍Nigeria
