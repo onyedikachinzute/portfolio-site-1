@@ -1,96 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Onyedikachi Nzute | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kachi — Software & Web Developer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
-
 <body>
-  <header class="sticky">
-    <div class="container header-container">
-      <div class="header-left">
-        <img src="images/kachi.jpg" alt="Profile" />
-        <h1>Onyedikachi Nzute</h1>
-      </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="index.html#contact">Contact</a>
-        <div class="dropdown">
-          <button class="dropbtn">☰</button>
-          <div class="dropdown-content">
-            <button id="theme-toggle">🌙</button>
-            <a href="index.html#resume">Resume</a>
-            <a href="moreprojects.html">More Projects</a>
-          </div>
-        </div>
-      </nav>
-    </div>
+  <!-- NAV -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container">
+      <a class="brand" href="#home">Kachi<span class="dot">.</span></a>
+
+      <!-- mobile hamburger -->
+      <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+      </button>
+
+      <ul class="nav-list" id="navList">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#works" class="nav-link">Works</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#about" class="nav-link">About Me</a></li>
+        <li><a href="#contact" class="nav-link">Contact Me</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section id="home" class="hero">
-    <div class="container" id="briefintro">
-      <h2>Welcome to My Digital Space</h2>
-      <p>I'm a Computer Science student passionate about web development, UI/UX design, and building efficient solutions for real-world problems. Explore my projects and get to know more about my journey.</p>
-    </div>
-  </section>
+  <main>
+    <!-- HERO (split layout) -->
+    <section id="home" class="hero container">
+      <div class="hero-left">
+        <div class="intro">
+          <p class="lead">Hi! I’m <strong>Kachi</strong>.</p>
+          <h1 class="hero-title">I’m a Software &amp; Web Developer</h1>
+          <p class="hero-desc">
+            I build fast, accessible web apps and backend systems — bridging clean UI with reliable server logic.
+            Currently studying Computer Science and actively working through a 50-project roadmap to sharpen real-world skills.
+          </p>
 
-  <section id="about" class="about-section">
-    <div class="container about-container">
-      <img src="images/kachi2.jpg" alt="Profile" class="profile-pic">
-      <div>
-        <h2>About Me</h2>
-        <p>Hi, I'm Onyedikachi Nzute, a developer with a deep interest in building sleek and responsive web applications. With experience ranging from desktop applications to full-stack web platforms, I constantly seek new ways to challenge myself and grow in this ever-evolving field.</p>
-        <p>I'm currently focused on improving my JavaScript and backend development skills. I also enjoy UI design and making sure users get a pleasant and intuitive experience when using apps I've worked on.</p>
-        <p>Technologies I work with include HTML, CSS, JavaScript, Python, and PostgreSQL. I'm open to collaborating on creative and impactful projects.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="projects-section">
-    <div class="container">
-      <h2>Featured Projects</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Movie Ticketing System</h3>
-          <p>A fully functioning GUI and database-backed system for booking movie tickets, viewing schedules, and managing users/admins.</p>
-        </div>
-        <div class="project-card">
-          <h3>Math Blaster</h3>
-          <p>An educational game to test and improve users' math speed. Created with Python and Tkinter with a simple GUI.</p>
-        </div>
-        <div class="project-card">
-          <h3>Clinic Booking App</h3>
-          <p>A Tkinter-based desktop application built for Pan-Atlantic University to manage clinic appointments and reduce queues.</p>
+          <div class="hero-cta">
+            <a class="btn hire-me" href="#contact">Hire Me</a>
+            <a class="btn ghost" href="#projects">See Projects</a>
+          </div>
         </div>
       </div>
-      <a class="view-more" href="moreprojects.html">View More Projects →</a>
-    </div>
-  </section>
 
-  <section id="contact" class="contact-section">
-    <div class="container">
-      <h2>Contact Me</h2>
-      <p>If you'd like to collaborate or just say hi, feel free to reach out.</p>
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required><br><br>
-        <input type="email" placeholder="Your Email" required><br><br>
-        <textarea placeholder="Your Message" required></textarea> <br><br>
-        <button type="submit">Send Message</button>
-      </form> <br>
-      <div class="social-links">
-        <a href="#">LinkedIn</a><br>
-        <a href="#">GitHub</a><br>
-        <a href="#">Twitter</a><br>
+      <div class="hero-right" aria-hidden="true">
+        <!-- replace src with your image path -->
+        <img src="images/kachi.jpg" alt="Photo of Kachi" class="profile-photo" />
+        <div class="photo-overlay" aria-hidden="true"></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <script src="theme-toggle.js"></script>
+    <!-- WORKS -->
+    <section id="works" class="section container">
+      <h2 class="section-title">Works</h2>
+      <p class="section-sub">Selected highlights and ongoing builds.</p>
+      <div class="grid">
+        <a href="https://github.com/onyedikachinzute/portfolio-site-1" target="_blank" >
+        <article class="card"> <h3>Portfolio Landing Page</h3> <p>Responsive landing, animations, and deployment via GH Pages.</p> </article>
+        </a>
+        <a href="https://github.com/onyedikachinzute/movie-booking-app" target="_blank" >
+        <article class="card"> <h3>Movie Booking App</h3> <p>SQL and Python-based movie reservation and booking app.</p> </article>
+        </a>
+        <!--
+        <article class="card"> <h3>Clinic Booking App</h3> <p>Booking, queue management, admin dashboards.</p> </article>
+        <article class="card"> <h3>Clinic Booking App</h3> <p>Booking, queue management, admin dashboards.</p> </article>
+        <article class="card"> <h3>Clinic Booking App</h3> <p>Booking, queue management, admin dashboards.</p> </article>
+        <article class="card"> <h3>Clinic Booking App</h3> <p>Booking, queue management, admin dashboards.</p> </article>
+      -->
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section alt container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">Small projects & prototypes that sharpen core skills.</p>
+      <div class="grid">
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>        <!--
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
+      -->
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section container">
+  <h2 class="section-title">About Me</h2>
+  <p class="section-sub">Who I am, how I work, and what drives me.</p>
+
+  <div class="about-grid">
+    <div>
+      <p>
+        Hello! I’m <strong>Kachi</strong> — a passionate <strong>Computer Science student</strong> and self-taught developer 
+        who loves turning ideas into real, working software. I specialize in 
+        <strong>web and software development</strong>, with a growing focus on backend integration, clean user interfaces, 
+        and systems that make people’s lives easier.
+      </p><br>
+
+      <p>
+        I started learning programming out of curiosity, but it quickly grew into a full pursuit of mastery. 
+        I’m currently working through a personal <strong>50-project roadmap</strong> — a hands-on challenge that allows me 
+        to explore different technologies, design principles, and problem-solving techniques through practical builds. 
+        Each project sharpens a specific skill, from REST APIs and databases to responsive UIs and automation scripts.
+      </p><br>
+
+      <p>
+        My development philosophy is simple: <em>keep learning, keep building, and keep improving</em>. 
+        I’m not afraid to take on complex problems, because I see every bug, error, or refactor as part of the growth process. 
+        I document my journey, track improvements, and always refactor old code to see how much I’ve learned.
+      </p><br>
+
+      <p>
+        <strong>My Goal:</strong><br>
+        To become a versatile full-stack developer capable of building production-level apps from start to finish — 
+        from the user interface to the backend logic. In the long term, I want to contribute to open-source projects 
+        and mentor new developers who are just beginning their journey.
+      </p><br>
+    </div>
+
+    <div>
+      <p>
+        <strong>Technical Focus:</strong><br>
+        I work with HTML, CSS, JavaScript, and Node.js on the web side, while also exploring Python and databases like 
+        PostgreSQL and SQLite. My interests include API design, full-stack systems, software design, and performance optimization. 
+        I enjoy combining creativity with logic — designing user experiences that look great and work flawlessly.
+      </p><br>
+
+      <p>
+        <strong>Mindset & Work Ethic:</strong><br>
+        I value consistency, clarity, and reliability. Whether I’m building a portfolio site, debugging an API, 
+        or collaborating on a team project, I approach every line of code with precision and intent. 
+        I believe good software should be well-documented, scalable, and easy for others to understand.
+      </p><br>
+
+      <p>
+        <strong>Soft Skills & Collaboration:</strong><br>
+        Beyond code, I’m a strong communicator and fast learner. I adapt easily to new technologies and workflows, 
+        enjoy sharing ideas, and learn quickly from feedback. I’ve worked on team-based academic and personal projects 
+        where clear version control and task organization were key.
+      </p><br>
+
+
+
+      <p>
+        Outside of coding, I’m passionate about tech communities, design, and lifelong learning. 
+        I’m always reading about new frameworks, exploring UI trends, or experimenting with tools that make developers more efficient. 
+        My goal is not just to write code — but to create impact through it.
+      </p><br>
+    </div>
+  </div>
+</section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact container">
+      <h2 class="section-title">Contact Me</h2>
+      <p class="section-sub">Want to work together? Click Hire Me or use the form below.</p>
+
+      <!-- left-aligned form (constrained width) -->
+
+      <form action="https://formspree.io/f/xvgvzglr" method="POST" class="contact-form" target="_blank">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" required />
+          <input type="email" name="email" placeholder="Your email" required />
+        </div>
+
+        <textarea name="message" placeholder="Tell me about the project" rows="5" required></textarea>
+
+        <div class="form-actions">
+          <button class="btn hire-me" type="submit">Send Message</button>
+          <a class="btn ghost" href="#home">Back to Top</a>
+        </div>
+      </form>
+
+
+      <!-- Social & email links (replace # with your URLs) -->
+      <div class="contact-links">
+        <a href="https://github.com/onyedikachinzute/" target="_blank" class="link">GitHub</a>
+        <a href="https://ng.linkedin.com/in/onyedikachi-nzute-b30162331" target="_blank" class="link">LinkedIn</a>
+        <a href="mailto:onyedikachinzute@gmail.com" target="_blank" class="link">Email</a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="yr"></span> Kachi. All rights reserved.</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Fixed Back-to-top button (always exists in DOM) -->
+  <a href="#home" id="backToTop" class="back-to-top" aria-label="Back to top">↑</a>
 </body>
-
 </html>
