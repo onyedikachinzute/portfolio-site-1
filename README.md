@@ -46,4 +46,41 @@ This portfolio was designed and coded from scratch to highlight:
 ---
 
 ## 📁 Project Structure
+├── index.html # Main landing page
+├── style.css # Styles and responsive layouts
+├── script.js # Navbar, animations, and interactivity
+├── images/
+│ └── kachi.jpg # Profile photo and future media assets
+└── README.md # Project documentation
+
+
+---
+
+## ⚙️ Setup Instructions
+
+If you want to clone and customize this portfolio:
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/onyedikachinzute/onyedikachinzute.github.io.git
+   cd onyedikachinzute.github.io
+
+
+## 💡Future Improvements
+1. Add dark/light mode toggle.
+2. Integrate a mini-blog section for write-ups.
+3. Add project filtering and modal previews.
+4. Animate section reveals with ScrollReveal.js or Framer Motion.
+
+
+## 🧑🏽Author
+Onyedikachi Nzute
+📍Nigeria
+🎓 Computer Science Student | 💻 Software & Web Developer
+
+
+##📜 License
+This project is open source and available under the MIT License.
+
+
 
