@@ -1,214 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kachi — Software & Web Developer</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kachi Nzute — Software & Computer Vision Developer</title>
+<meta name="description" content="Onyedikachi 'Kachi' Nzute — Python developer building offline computer-vision tools, desktop AI assistants, and backend systems. IT Intern at OES Energy Services." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<script>
+  /* Apply saved theme before paint to avoid a flash of the wrong theme */
+  (function(){
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    } catch(e){}
+  })();
+</script>
+<script defer src="script.js"></script>
 </head>
 <body>
-  <!-- NAV -->
-  <header class="site-header" id="siteHeader">
-    <nav class="nav container">
-      <a class="brand" href="#home">Kachi<span class="dot">.</span></a>
+<div class="scan-noise" aria-hidden="true"></div>
 
-      <!-- mobile hamburger -->
-      <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
-        <span class="ham-line"></span>
-        <span class="ham-line"></span>
-        <span class="ham-line"></span>
-      </button>
+<!-- NAV -->
+<header class="site-header" id="siteHeader">
+  <nav class="nav container">
+    <a class="brand" href="#home">Kachi<span class="dot">.</span><span class="brand-tag">dev</span></a>
 
-      <ul class="nav-list" id="navList">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#works" class="nav-link">Works</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#about" class="nav-link">About Me</a></li>
-        <li><a href="#contact" class="nav-link">Contact Me</a></li>
-      </ul>
-    </nav>
-  </header>
+    <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+      <span class="ham-line"></span>
+    </button>
 
-  <main>
-    <!-- HERO (split layout) -->
-    <section id="home" class="hero container">
-      <div class="hero-left">
-        <div class="intro">
-          <p class="lead">Hi! I’m <strong>Kachi</strong>.</p>
-          <h1 class="hero-title">I’m a Software &amp; Web Developer</h1>
-          <p class="hero-desc">
-            I build fast, accessible web apps and backend systems — bridging clean UI with reliable server logic.
-            Currently studying Computer Science and actively working through a 50-project roadmap to sharpen real-world skills.
+    <ul class="nav-list" id="navList">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#work" class="nav-link">Projects</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Resume ↓</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section id="home" class="hero container" data-animate-hero>
+    <div class="hero-left intro-enter">
+      <div class="hero-eyebrow-row">
+        <span class="eyebrow">Open to opportunities</span>
+        <span class="divider" aria-hidden="true"></span>
+        <span class="hero-role">Lagos, Nigeria</span>
+      </div>
+
+      <h1 class="hero-title">
+        Building software that <span class="accent-word frame-word">sees</span>,
+        listens, and automates the boring parts.
+      </h1>
+
+      <p class="hero-desc">
+        I'm <strong>Kachi</strong> — a Computer Science student and Python developer who builds
+        <strong>offline computer-vision tools</strong>, <strong>desktop AI assistants</strong>, and
+        <strong>backend systems</strong> that solve real workflow problems, not just tutorial ones.
+        Currently an IT intern at <strong>OES Energy Services</strong>, where I shipped a production
+        document-extraction pipeline, and working through a self-directed 50-project roadmap on the side.
+      </p>
+
+      <div class="hero-cta">
+        <a class="btn primary" href="#contact">
+          Download Resume
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+        </a>
+        <a class="btn ghost" href="#work">View Featured Projects</a>
+      </div>
+
+      <div class="hero-stack" aria-label="Core stack">
+        <span>Python</span><span>Computer Vision</span><span>PyQt6</span><span>PostgreSQL</span><span>SQLite</span><span>Tkinter</span>
+      </div>
+    </div>
+
+    <div class="hero-right" aria-hidden="true">
+      <div class="viewfinder">
+        <img src="images/kachi.jpg" alt="" />
+        <div class="overlay-grad"></div>
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="scanline"></div>
+        <span class="tag mono">SUBJECT // DEVELOPER.KACHI</span>
+      </div>
+      <div class="float-card fc-1">
+        <b>3</b> shipped projects
+      </div>
+      <div class="float-card fc-2">
+        <b>OES</b> internship — active
+      </div>
+    </div>
+
+    <div class="scroll-cue"><span>SCROLL</span><span class="line"></span></div>
+  </section>
+
+  <!-- ============ FEATURED PROJECTS ============ -->
+  <section id="work" class="section container">
+    <div class="section-head reveal">
+      <span class="section-index">01 / Featured Projects</span>
+      <h2 class="section-title">Real software, solving real problems</h2>
+      <p class="section-sub">Three projects that span the stack I care about most: computer vision, desktop applications, and data-backed systems.</p>
+    </div>
+
+    <div class="project-list">
+
+      <!-- OES ID EXTRACTOR -->
+      <a class="project-card reveal" href="projects/oes-id-extractor.html">
+        <div class="pc-visual">
+          <span class="pc-glyph mono">CV-01</span>
+          <span class="corner tl"></span><span class="corner br"></span>
+          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="3" y="4" width="18" height="16" rx="2"/>
+            <circle cx="9" cy="10" r="2.2"/>
+            <path d="M4 18l4.5-4.5a1.5 1.5 0 0 1 2.1 0L14 17"/>
+            <path d="M13 15l1.8-1.8a1.5 1.5 0 0 1 2.1 0L20 16"/>
+            <path d="M17 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/>
+          </svg>
+          <span class="pc-status">Built for internal production use</span>
+        </div>
+        <div class="pc-body">
+          <span class="pc-index mono">01</span>
+          <h3 class="pc-title">OES ID Extractor</h3>
+          <p class="pc-subtitle">Offline document-to-photo extraction pipeline</p>
+          <p class="pc-desc">
+            A fully offline desktop app built during my internship at OES Energy Services to automate ID-card
+            production. It scans uploaded PDFs or images, detects and crops personnel photos and signatures,
+            removes backgrounds, sharpens the output, and exports production-ready files named per person —
+            with zero cloud dependency to protect corporate data.
           </p>
-
-          <div class="hero-cta">
-            <a class="btn hire-me" href="#contact">Hire Me</a>
-            <a class="btn ghost" href="#projects">See Projects</a>
+          <div class="pc-tags">
+            <span>Python</span><span>Computer Vision</span><span>Background Removal</span><span>PyInstaller</span><span>Batch Processing</span>
           </div>
+          <div class="pc-actions">
+            <span class="pc-link filled">View Case Study
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+            <span class="pc-link">GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18c-4.5 2-4.5-1-6-2m12 4v-3.4c0-.9.3-1.5.7-1.8-2.3-.3-4.7-1.2-4.7-5.2 0-1.1.4-2 1-2.7-.1-.3-.4-1.4.1-2.9 0 0 .9-.3 3 1a10 10 0 0 1 5.4 0c2.1-1.3 3-1 3-1 .5 1.5.2 2.6.1 2.9.6.7 1 1.6 1 2.7 0 4-2.4 4.9-4.7 5.2.4.3.7.9.7 1.8V19"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- NED THE NERD -->
+      <a class="project-card reveal" href="projects/ned-the-nerd.html">
+        <div class="pc-visual">
+          <span class="pc-glyph mono">AI-02</span>
+          <span class="corner tl"></span><span class="corner br"></span>
+          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="5" y="7" width="14" height="11" rx="3"/>
+            <path d="M12 7V4M9 3.5h6"/>
+            <circle cx="9" cy="12.5" r="1.2" fill="currentColor" stroke="none"/>
+            <circle cx="15" cy="12.5" r="1.2" fill="currentColor" stroke="none"/>
+            <path d="M9 16h6M3 11v3M21 11v3"/>
+          </svg>
+          <span class="pc-status">Actively under development</span>
+        </div>
+        <div class="pc-body">
+          <span class="pc-index mono">02</span>
+          <h3 class="pc-title">Ned the Nerd</h3>
+          <p class="pc-subtitle">Modular desktop AI assistant</p>
+          <p class="pc-desc">
+            A Python-built desktop AI assistant designed to go beyond Q&amp;A — Ned listens through
+            speech-to-text, holds conversational context, and executes desktop automation through a
+            plugin-ready architecture. Built on PyQt6 with an OpenAI-backed conversational core and
+            SQLite for persistent memory, with wake-word detection and local LLM support on the roadmap.
+          </p>
+          <div class="pc-tags">
+            <span>Python</span><span>PyQt6</span><span>Speech Recognition</span><span>OpenAI API</span><span>SQLite</span>
+          </div>
+          <div class="pc-actions">
+            <span class="pc-link filled">View Case Study
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+            <span class="pc-link">GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18c-4.5 2-4.5-1-6-2m12 4v-3.4c0-.9.3-1.5.7-1.8-2.3-.3-4.7-1.2-4.7-5.2 0-1.1.4-2 1-2.7-.1-.3-.4-1.4.1-2.9 0 0 .9-.3 3 1a10 10 0 0 1 5.4 0c2.1-1.3 3-1 3-1 .5 1.5.2 2.6.1 2.9.6.7 1 1.6 1 2.7 0 4-2.4 4.9-4.7 5.2.4.3.7.9.7 1.8V19"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- PANAVIEW -->
+      <a class="project-card reveal" href="projects/panaview.html">
+        <div class="pc-visual">
+          <span class="pc-glyph mono">DB-03</span>
+          <span class="corner tl"></span><span class="corner br"></span>
+          <svg class="pc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="M3 9h18"/>
+            <rect x="6" y="12" width="3" height="3" rx=".5"/>
+            <rect x="10.5" y="12" width="3" height="3" rx=".5"/>
+            <rect x="15" y="12" width="3" height="3" rx=".5"/>
+          </svg>
+          <span class="pc-status">Full-stack CRUD system</span>
+        </div>
+        <div class="pc-body">
+          <span class="pc-index mono">03</span>
+          <h3 class="pc-title">Panaview</h3>
+          <p class="pc-subtitle">Movie reservation &amp; booking system</p>
+          <p class="pc-desc">
+            An SQL and Python-based movie reservation system with separate user and admin dashboards.
+            Users browse showtimes, reserve seats with live availability, and get an itemized receipt;
+            admins manage the movie catalogue and showtimes, with automatic cleanup of associated shows
+            when a title is removed. Backed by PostgreSQL via psycopg2.
+          </p>
+          <div class="pc-tags">
+            <span>Python</span><span>PostgreSQL</span><span>Tkinter</span><span>psycopg2</span><span>Admin Dashboards</span>
+          </div>
+          <div class="pc-actions">
+            <span class="pc-link filled">View Case Study
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+            <span class="pc-link">GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18c-4.5 2-4.5-1-6-2m12 4v-3.4c0-.9.3-1.5.7-1.8-2.3-.3-4.7-1.2-4.7-5.2 0-1.1.4-2 1-2.7-.1-.3-.4-1.4.1-2.9 0 0 .9-.3 3 1a10 10 0 0 1 5.4 0c2.1-1.3 3-1 3-1 .5 1.5.2 2.6.1 2.9.6.7 1 1.6 1 2.7 0 4-2.4 4.9-4.7 5.2.4.3.7.9.7 1.8V19"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="section alt container">
+    <div class="section-head reveal">
+      <span class="section-index">02 / Experience</span>
+      <h2 class="section-title">Where I've been putting this to work</h2>
+      <p class="section-sub">Hands-on time in a real engineering environment, building tools that people at the company actually use.</p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="timeline-item current">
+        <span class="timeline-dot"></span>
+        <div class="exp-card">
+          <div class="exp-top">
+            <span class="exp-role">IT Intern</span>
+            <span class="exp-badge">Current</span>
+          </div>
+          <div class="exp-meta">
+            <span class="mono">OES Energy Services Limited · Nigeria</span>
+            <span class="mono">Present</span>
+          </div>
+          <ul class="exp-list">
+            <li>Still early in the role and <strong>actively learning</strong> on the job — working alongside the team's real workflows, not simulated ones.</li>
+            <li>Designed and built the <strong>OES ID Extractor</strong>, a fully offline computer-vision tool now used internally to pull photos and signatures from ID documents for card production.</li>
+            <li>Got first-hand exposure to <strong>corporate data-privacy constraints</strong>, which shaped the decision to keep the entire pipeline offline with zero external API calls.</li>
+            <li>Working directly with non-technical stakeholders to turn a manual, repetitive task into a batch-processed, one-click tool.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="section container">
+    <div class="section-head reveal">
+      <span class="section-index">03 / Skills</span>
+      <h2 class="section-title">What I build with</h2>
+      <p class="section-sub">Grouped by role rather than dumped in one list — here's what each part of my stack actually does.</p>
+    </div>
+
+    <div class="skills-grid reveal">
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <h3>Languages</h3>
+        </div>
+        <div class="skill-tags">
+          <span>Python</span><span>JavaScript</span><span>SQL</span><span>HTML5</span><span>CSS3</span>
         </div>
       </div>
 
-      <div class="hero-right" aria-hidden="true">
-        <!-- replace src with your image path -->
-        <img src="images/kachi.jpg" alt="Photo of Kachi" class="profile-photo" />
-        <div class="photo-overlay" aria-hidden="true"></div>
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <h3>Frameworks &amp; Libraries</h3>
+        </div>
+        <div class="skill-tags">
+          <span>PyQt6</span><span>Tkinter</span><span>OpenCV</span><span>YOLO</span><span>SpeechRecognition</span>
+        </div>
       </div>
-    </section>
 
-    <!-- WORKS -->
-    <section id="works" class="section container">
-      <h2 class="section-title">Works</h2>
-      <p class="section-sub">Selected highlights and ongoing builds.</p>
-      <div class="grid">
-        <a href="https://github.com/onyedikachinzute/portfolio-site-1" target="_blank" >
-        <article class="card"> <h3>Portfolio Landing Page</h3> <p>Responsive landing, animations, and deployment via GH Pages.</p> </article>
-        </a>
-        <a href="https://github.com/onyedikachinzute/movie-booking-app" target="_blank" >
-        <article class="card"> <h3>Movie Booking App</h3> <p>SQL and Python-based movie reservation and booking app.</p> </article>
-        </a>
-        <!--
-        <article class="card"> <h3>Clinic Booking App</h3> <p>Booking, queue management, admin dashboards.</p> </article>
-        <article class="card"> <h3>Clinic Booking App</h3> <p>Booking, queue management, admin dashboards.</p> </article>
-        <article class="card"> <h3>Clinic Booking App</h3> <p>Booking, queue management, admin dashboards.</p> </article>
-        <article class="card"> <h3>Clinic Booking App</h3> <p>Booking, queue management, admin dashboards.</p> </article>
-      -->
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+          <h3>Databases</h3>
+        </div>
+        <div class="skill-tags">
+          <span>PostgreSQL</span><span>SQLite</span><span>psycopg2</span>
+        </div>
       </div>
-    </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section alt container">
-      <h2 class="section-title">Projects</h2>
-      <p class="section-sub">Small projects & prototypes that sharpen core skills.</p>
-      <div class="grid">
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>        <!--
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-        <article class="card"> <h3>Name</h3> <p>Details</p> </article>
-      -->
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+          <h3>Tools &amp; Platforms</h3>
+        </div>
+        <div class="skill-tags">
+          <span>Git</span><span>GitHub</span><span>VS Code</span><span>PyInstaller</span>
+        </div>
       </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section container">
-  <h2 class="section-title">About Me</h2>
-  <p class="section-sub">Who I am, how I work, and what drives me.</p>
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="4"/></svg>
+          <h3>Core Concepts</h3>
+        </div>
+        <div class="skill-tags">
+          <span>Computer Vision</span><span>REST APIs</span><span>Automation</span><span>Offline-first ML</span><span>Desktop Apps</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="about-grid">
-    <div>
-      <p>
-        Hello! I’m <strong>Kachi</strong> — a passionate <strong>Computer Science student</strong> and self-taught developer 
-        who loves turning ideas into real, working software. I specialize in 
-        <strong>web and software development</strong>, with a growing focus on backend integration, clean user interfaces, 
-        and systems that make people’s lives easier.
-      </p><br>
-
-      <p>
-        I started learning programming out of curiosity, but it quickly grew into a full pursuit of mastery. 
-        I’m currently working through a personal <strong>50-project roadmap</strong> — a hands-on challenge that allows me 
-        to explore different technologies, design principles, and problem-solving techniques through practical builds. 
-        Each project sharpens a specific skill, from REST APIs and databases to responsive UIs and automation scripts.
-      </p><br>
-
-      <p>
-        My development philosophy is simple: <em>keep learning, keep building, and keep improving</em>. 
-        I’m not afraid to take on complex problems, because I see every bug, error, or refactor as part of the growth process. 
-        I document my journey, track improvements, and always refactor old code to see how much I’ve learned.
-      </p><br>
-
-      <p>
-        <strong>My Goal:</strong><br>
-        To become a versatile full-stack developer capable of building production-level apps from start to finish — 
-        from the user interface to the backend logic. In the long term, I want to contribute to open-source projects 
-        and mentor new developers who are just beginning their journey.
-      </p><br>
+  <!-- ============ ACTIVITY ============ -->
+  <section class="section alt container">
+    <div class="section-head reveal">
+      <span class="section-index">04 / Activity</span>
+      <h2 class="section-title">Elsewhere online</h2>
+      <p class="section-sub">GitHub numbers are pulled live from the public API; LinkedIn is where I post updates and connect professionally.</p>
     </div>
 
-    <div>
-      <p>
-        <strong>Technical Focus:</strong><br>
-        I work with HTML, CSS, JavaScript, and Node.js on the web side, while also exploring Python and databases like 
-        PostgreSQL and SQLite. My interests include API design, full-stack systems, software design, and performance optimization. 
-        I enjoy combining creativity with logic — designing user experiences that look great and work flawlessly.
-      </p><br>
+    <div class="activity-grid reveal">
+      <div class="gh-panel">
+        <span class="gh-platform-label">GitHub</span>
+        <img class="gh-avatar" id="ghAvatar" src="https://github.com/onyedikachinzute.png" alt="Kachi's GitHub avatar" />
+        <span class="gh-handle mono">@onyedikachinzute</span>
+        <div class="gh-stat-row" id="ghStats">
+          <div class="gh-stat"><span class="num" id="ghRepos">—</span><span class="lbl">Public Repos</span></div>
+          <div class="gh-stat"><span class="num" id="ghSince">—</span><span class="lbl">Member Since</span></div>
+        </div>
+        <a class="btn ghost small" href="https://github.com/onyedikachinzute" target="_blank" rel="noopener">Visit Profile</a>
+      </div>
 
-      <p>
-        <strong>Mindset & Work Ethic:</strong><br>
-        I value consistency, clarity, and reliability. Whether I’m building a portfolio site, debugging an API, 
-        or collaborating on a team project, I approach every line of code with precision and intent. 
-        I believe good software should be well-documented, scalable, and easy for others to understand.
-      </p><br>
-
-      <p>
-        <strong>Soft Skills & Collaboration:</strong><br>
-        Beyond code, I’m a strong communicator and fast learner. I adapt easily to new technologies and workflows, 
-        enjoy sharing ideas, and learn quickly from feedback. I’ve worked on team-based academic and personal projects 
-        where clear version control and task organization were key.
-      </p><br>
-
-
-
-      <p>
-        Outside of coding, I’m passionate about tech communities, design, and lifelong learning. 
-        I’m always reading about new frameworks, exploring UI trends, or experimenting with tools that make developers more efficient. 
-        My goal is not just to write code — but to create impact through it.
-      </p><br>
+      <div class="gh-panel li-panel">
+        <span class="gh-platform-label">LinkedIn</span>
+        <div class="gh-avatar" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </div>
+        <span class="gh-handle mono">Onyedikachi Nzute</span>
+        <div class="gh-stat-row">
+          <div class="gh-stat"><span class="num" style="font-size:1.1rem;">IT Intern</span><span class="lbl">OES Energy Services</span></div>
+          <div class="gh-stat"><span class="num" style="font-size:1.1rem;">CS Student</span><span class="lbl">Computer Science</span></div>
+        </div>
+        <a class="btn ghost small" href="https://www.linkedin.com/in/onyedikachi-nzute-b30162331/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section container">
+    <div class="section-head reveal">
+      <span class="section-index">05 / About</span>
+      <h2 class="section-title">Who I am, how I work</h2>
+      <p class="section-sub">What drives me, and how I approach building things.</p>
+    </div>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section contact container">
-      <h2 class="section-title">Contact Me</h2>
-      <p class="section-sub">Want to work together? Click Hire Me or use the form below.</p>
+    <div class="about-grid reveal">
+      <div>
+        <p>
+          I'm <strong>Onyedikachi "Kachi" Nzute</strong>, a Computer Science student and self-taught developer who
+          likes turning ideas into software that actually gets used. I specialize in
+          <strong>Python-based systems</strong> — desktop apps, computer vision pipelines, and backend logic — with a
+          growing focus on the kind of clean, dependable engineering that holds up outside a tutorial.
+        </p>
+        <p>
+          I'm currently working through a personal <strong>50-project roadmap</strong>, a self-imposed challenge to
+          explore different technologies and problem spaces through practical builds — from REST APIs and databases
+          to computer vision and automation scripts. Each project is picked to sharpen a specific skill.
+        </p>
+        <p>
+          My philosophy: <em>keep learning, keep building, keep improving.</em> I don't shy away from complex
+          problems — every bug and refactor is part of the process. I document what I learn and regularly revisit
+          old code to see how far I've come.
+        </p>
+      </div>
 
-      <!-- left-aligned form (constrained width) -->
+      <div>
+        <p>
+          <strong>Technical focus:</strong> Python is my main tool, alongside HTML, CSS, and JavaScript on the web
+          side, and PostgreSQL/SQLite for data. I'm especially interested in computer vision, API design, and
+          building software that stays useful outside ideal conditions — like the offline-first constraint behind
+          the OES ID Extractor.
+        </p>
+        <p>
+          <strong>Mindset &amp; work ethic:</strong> I value consistency, clarity, and reliability. Whether I'm
+          debugging a detection pipeline or wiring up an admin dashboard, I try to write code that's easy for someone
+          else — or future me — to pick up and understand.
+        </p>
+        <p>
+          <strong>Beyond code:</strong> I'm into tech communities, UI design trends, and lifelong learning. My goal
+          isn't just to write code — it's to build things that make someone's actual workflow easier.
+        </p>
+      </div>
+    </div>
+  </section>
 
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section alt container">
+    <div class="section-head reveal">
+      <span class="section-index">06 / Contact</span>
+      <h2 class="section-title">Let's build something</h2>
+      <p class="section-sub">Have a role, project, or idea in mind? Send a message or reach out directly.</p>
+    </div>
+
+    <div class="contact-wrap reveal">
       <form action="https://formspree.io/f/xvgvzglr" method="POST" class="contact-form" target="_blank">
         <div class="form-row">
           <input type="text" name="name" placeholder="Your name" required />
           <input type="email" name="email" placeholder="Your email" required />
         </div>
-
-        <textarea name="message" placeholder="Tell me about the project" rows="5" required></textarea>
-
+        <textarea name="message" placeholder="Tell me about the project" rows="6" required></textarea>
         <div class="form-actions">
-          <button class="btn hire-me" type="submit">Send Message</button>
+          <button class="btn primary" type="submit">Send Message</button>
           <a class="btn ghost" href="#home">Back to Top</a>
         </div>
       </form>
 
-
-      <!-- Social & email links (replace # with your URLs) -->
-      <div class="contact-links">
-        <a href="https://github.com/onyedikachinzute/" target="_blank" class="link">GitHub</a>
-        <a href="https://ng.linkedin.com/in/onyedikachi-nzute-b30162331" target="_blank" class="link">LinkedIn</a>
-        <a href="mailto:onyedikachinzute@gmail.com" target="_blank" class="link">Email</a>
+      <div class="contact-side">
+        <div class="contact-links">
+          <a href="https://github.com/onyedikachinzute/" target="_blank" class="link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18c-4.5 2-4.5-1-6-2m12 4v-3.4c0-.9.3-1.5.7-1.8-2.3-.3-4.7-1.2-4.7-5.2 0-1.1.4-2 1-2.7-.1-.3-.4-1.4.1-2.9 0 0 .9-.3 3 1a10 10 0 0 1 5.4 0c2.1-1.3 3-1 3-1 .5 1.5.2 2.6.1 2.9.6.7 1 1.6 1 2.7 0 4-2.4 4.9-4.7 5.2.4.3.7.9.7 1.8V19"/></svg>
+            GitHub — onyedikachinzute
+          </a>
+          <a href="https://ng.linkedin.com/in/onyedikachi-nzute-b30162331" target="_blank" class="link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 21v-7a3 3 0 0 1 6 0v7M10 9v12"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:onyedikachinzute@gmail.com" class="link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            onyedikachinzute@gmail.com
+          </a>
+        </div>
+        <p class="contact-note mono">
+          STATUS: Actively interning at OES Energy Services and open to new opportunities, collaborations,
+          and freelance work on the side.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p>© <span id="yr"></span> Kachi. All rights reserved.</p>
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>© <span id="yr"></span> Onyedikachi Nzute. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://github.com/onyedikachinzute/" target="_blank">GitHub</a>
+        <a href="https://ng.linkedin.com/in/onyedikachi-nzute-b30162331" target="_blank">LinkedIn</a>
+        <a href="mailto:onyedikachinzute@gmail.com">Email</a>
       </div>
-    </footer>
-  </main>
+    </div>
+  </footer>
+</main>
 
-  <!-- Fixed Back-to-top button (always exists in DOM) -->
-  <a href="#home" id="backToTop" class="back-to-top" aria-label="Back to top">↑</a>
+<a href="#home" id="backToTop" class="back-to-top" aria-label="Back to top">↑</a>
+<button id="themeToggle" class="theme-toggle" aria-label="Switch to light mode" type="button">
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
 </body>
 </html>

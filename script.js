@@ -1,110 +1,180 @@
-/* ======= Simple and clear DOM helpers ======= */
-const navList = document.getElementById('navList');
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('main section[id]');
-const header = document.getElementById('siteHeader');
-const backToTop = document.getElementById('backToTop');
-const yearEl = document.getElementById('yr');
+/* ==========================================================================
+   Portfolio interactivity
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
 
-/* Year (footer) */
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+  const navList = document.getElementById('navList');
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('main section[id]');
+  const header = document.getElementById('siteHeader');
+  const backToTop = document.getElementById('backToTop');
+  const yearEl = document.getElementById('yr');
+  const heroSection = document.querySelector('[data-animate-hero]');
 
-/* -------------------------
-   Mobile menu toggle
-   ------------------------- */
-hamburger.addEventListener('click', () => {
-  const isOpen = navList.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', String(isOpen));
-});
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-/* Close mobile menu when a nav link is clicked (keeps hamburger visible) */
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navList.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
+  /* trigger hero corner/tag entrance */
+  if (heroSection) {
+    requestAnimationFrame(() => heroSection.classList.add('loaded'));
+  }
+
+  /* -------------------------
+     Mobile menu toggle
+     ------------------------- */
+  if (hamburger && navList) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = navList.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      hamburger.classList.toggle('is-open', isOpen);
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* -------------------------
+     Smooth scroll with header offset
+     ------------------------- */
+  const headerHeight = () => header ? header.offsetHeight : 72;
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - headerHeight() - 8;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
   });
-});
 
-/* -------------------------
-   Smooth scroll with offset for sticky header
-   ------------------------- */
-const headerHeight = () => header ? header.offsetHeight : 64;
+  /* -------------------------
+     Active nav link on scroll
+     (rootMargin band near the top of the viewport, rather than
+     requiring 50% of a section's area to be visible — tall sections
+     like Featured Projects never reach that threshold otherwise)
+     ------------------------- */
+  if (sections.length) {
+    const firstLink = document.querySelector('.nav-link[href="#home"]');
+    if (firstLink) firstLink.classList.add('active');
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const href = this.getAttribute('href');
-    if (!href || href === '#') return;
-    const target = document.querySelector(href);
-    if (!target) return;
-    e.preventDefault();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const link = document.querySelector(`.nav-link[href="#${id}"]`);
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { root: null, rootMargin: `-${headerHeight() + 20}px 0px -55% 0px`, threshold: 0 });
 
-    // Compute top position minus header height and small gap
-    const top = target.getBoundingClientRect().top + window.scrollY - headerHeight() - 8;
-    window.scrollTo({ top, behavior: 'smooth' });
-  });
-});
+    sections.forEach(s => observer.observe(s));
+  }
 
-/* -------------------------
-   IntersectionObserver to update active nav link
-   (improved thresholds so "Works" doesn't highlight "Projects")
-   ------------------------- */
-// Force "Home" active on load
-document.querySelector('.nav-link[href="#home"]').classList.add('active');
+  /* -------------------------
+     Header hide/show + back-to-top
+     ------------------------- */
+  let lastScroll = window.pageYOffset || 0;
+  const showBackToTopThreshold = 300;
 
-const observerOptions = {
-  root: null,
-  threshold: 0.5, // must be at least 50% visible
-};
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset || 0;
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    const id = entry.target.id;
-    const link = document.querySelector(`.nav-link[href="#${id}"]`);
-
-    if (entry.isIntersecting) {
-      document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-      if (link) link.classList.add('active');
+    if (backToTop) {
+      if (currentScroll > showBackToTopThreshold) backToTop.classList.add('show');
+      else backToTop.classList.remove('show');
     }
+
+    if (header) {
+      if (currentScroll <= 10) header.classList.remove('hide');
+      else if (currentScroll > lastScroll + 10) header.classList.add('hide');
+      else if (currentScroll < lastScroll - 10) header.classList.remove('hide');
+    }
+
+    lastScroll = currentScroll;
   });
-}, observerOptions);
 
-sections.forEach(s => observer.observe(s));
-
-/* -------------------------
-   Single scroll handler:
-   - shows/hides header depending on scroll direction
-   - shows back-to-top when scrolled past threshold
-   ------------------------- */
-let lastScroll = window.pageYOffset || 0;
-const showBackToTopThreshold = 300; // px
-
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset || 0;
-
-  // Back-to-top visibility
-  if (currentScroll > showBackToTopThreshold) {
-    backToTop.classList.add('show');
-  } else {
-    backToTop.classList.remove('show');
+  /* -------------------------
+     Scroll-triggered reveal animations
+     ------------------------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length) {
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revealObserver.observe(el));
   }
 
-  // header hide on scroll down, show on scroll up
-  if (currentScroll <= 10) {
-    // near top: always show header
-    header.classList.remove('hide');
-  } else if (currentScroll > lastScroll + 10) {
-    // scrolling down (with small buffer)
-    header.classList.add('hide');
-  } else if (currentScroll < lastScroll - 10) {
-    // scrolling up
-    header.classList.remove('hide');
+  /* stagger project cards specifically */
+  document.querySelectorAll('.project-card.reveal').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 90}ms`;
+  });
+
+  /* -------------------------
+     GitHub live stats (public API, no auth)
+     ------------------------- */
+  const ghRepos = document.getElementById('ghRepos');
+  const ghSince = document.getElementById('ghSince');
+
+  if (ghRepos) {
+    fetch('https://api.github.com/users/onyedikachinzute')
+      .then(res => {
+        if (!res.ok) throw new Error('GitHub API request failed');
+        return res.json();
+      })
+      .then(data => {
+        animateCount(ghRepos, data.public_repos ?? 0);
+        if (ghSince && data.created_at) {
+          ghSince.textContent = new Date(data.created_at).getFullYear();
+        }
+      })
+      .catch(() => {
+        [ghRepos, ghSince].forEach(el => {
+          if (el) el.textContent = '—';
+        });
+      });
   }
 
-  lastScroll = currentScroll;
-});
+  function animateCount(el, target) {
+    if (!el) return;
+    const duration = 900;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
 
-/* Accessibility: ensure Back-to-top keyboard focus works */
-backToTop.addEventListener('click', (e) => {
-  // standard smooth scroll handled by anchor click handler above
+  /* -------------------------
+     Light / dark theme toggle
+     (initial theme is already applied by the inline head script
+     to avoid a flash of the wrong theme; this just wires the button)
+     ------------------------- */
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const root = document.documentElement;
+      const current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      const next = current === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) { /* storage unavailable */ }
+      themeToggle.setAttribute('aria-label', next === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+    });
+  }
+
 });
