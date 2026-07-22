@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kachi's To-Do List — Case Study | Kachi Nzute</title>
+<meta name="description" content="A minimalist Flask-powered to-do list app with dark/light themes, smooth animations, and local JSON storage." />
+<link rel="canonical" href="https://onyedikachinzute.github.io/projects/to-do-list.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Kachi's To-Do List — Case Study | Kachi Nzute" />
+<meta property="og:description" content="A minimalist Flask-powered to-do list app with dark/light themes, smooth animations, and local JSON storage." />
+<meta property="og:url" content="https://onyedikachinzute.github.io/projects/to-do-list.html" />
+<meta property="og:image" content="https://onyedikachinzute.github.io/images/kachi.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kachi's To-Do List — Case Study | Kachi Nzute" />
+<meta name="twitter:description" content="A minimalist Flask-powered to-do list app with dark/light themes, smooth animations, and local JSON storage." />
+<meta name="twitter:image" content="https://onyedikachinzute.github.io/images/kachi.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css" />
+<link rel="icon" type="image/x-icon" href="../Kachi.ico">
+<script>
+  (function(){
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    } catch(e){}
+  })();
+</script>
+<script defer src="../script.js"></script>
+</head>
+<body>
+<div class="scan-noise" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav container">
+    <a class="brand" href="../index.html#home">Kachi<span class="dot">.</span><span class="brand-tag">dev</span></a>
+    <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span class="ham-line"></span><span class="ham-line"></span><span class="ham-line"></span>
+    </button>
+    <ul class="nav-list" id="navList">
+      <li><a href="../index.html#home" class="nav-link">Home</a></li>
+      <li><a href="../index.html#work" class="nav-link">Projects</a></li>
+      <li><a href="../index.html#experience" class="nav-link">Experience</a></li>
+      <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+      <li><a href="../index.html#about" class="nav-link">About</a></li>
+      <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="detail-hero container">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span>/</span><a href="../index.html#all-projects">All Projects</a><span>/</span><span>To-Do List</span>
+    </div>
+
+    <div class="detail-head">
+      <div>
+        <h1 class="detail-title">Kachi's To-Do List</h1>
+        <p class="detail-subtitle mono">Minimalist Flask-powered task manager</p>
+      </div>
+      <div class="detail-actions">
+        <a class="btn ghost" href="https://github.com/onyedikachinzute/to-do_list" target="_blank" rel="noopener">View on GitHub</a>
+        <a class="btn primary" href="../index.html#contact">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="detail-tags">
+      <span>Python</span><span>Flask</span><span>HTML5</span><span>CSS3</span>
+      <span>JavaScript</span><span>JSON Storage</span><span>Dark/Light Mode</span>
+    </div>
+  </section>
+
+  <section class="detail-body container">
+    <div class="detail-main">
+      <h2>The idea</h2>
+      <p>
+        A clean, responsive to-do list app built to be genuinely pleasant to use day-to-day — not just a
+        CRUD exercise. Tasks can be added, marked complete, and deleted, all backed by a lightweight Flask
+        server with zero database setup required.
+      </p>
+
+      <div class="shot-section">
+        <h2>Screenshots</h2>
+        <div class="shot-gallery empty" data-shots='["screenshots/to-do-list/01.jpg","screenshots/to-do-list/02.jpg","screenshots/to-do-list/03.jpg","screenshots/to-do-list/04.jpg"]'></div>
+      </div>
+
+      <h2>Features</h2>
+      <ul>
+        <li><strong>Add, mark, and delete tasks</strong> with smooth micro-animations on every action.</li>
+        <li><strong>Data persistence</strong> via a lightweight local JSON file — no database setup needed.</li>
+        <li><strong>Dark / light mode toggle</strong> with the preference saved in <code class="mono">localStorage</code>.</li>
+        <li><strong>Fully responsive</strong> layout that works cleanly on both desktop and mobile.</li>
+      </ul>
+
+      <h2>How it works</h2>
+      <p>
+        When a task is added, it's written to <code class="mono">tasks.json</code>. Toggling a task's
+        completion state fires an AJAX POST call to the Flask backend, which updates the <code class="mono">done</code>
+        status. Deleting a task fades it out client-side before removing it from the JSON store. The Flask
+        server (<code class="mono">app.py</code>) handles all of this through simple REST-style routes, with
+        the frontend template in <code class="mono">templates/index.html</code> and styling/logic split across
+        <code class="mono">static/style.css</code> and <code class="mono">static/script.js</code>.
+      </p>
+
+      <div class="code-block">
+<span class="cm"># running it locally</span><br>
+git clone https://github.com/onyedikachinzute/to-do_list.git<br>
+cd to-do_list<br>
+pip install flask<br>
+python app.py<br>
+<span class="cm"># then visit http://127.0.0.1:5000/</span>
+      </div>
+
+      <h2>What's next</h2>
+      <ul>
+        <li><strong>Task editing</strong> — currently tasks can be added/removed but not edited in place.</li>
+        <li><strong>Categories or filters</strong> (work, personal, etc.).</li>
+        <li><strong>Due dates and reminders.</strong></li>
+        <li><strong>Real database backing</strong> (SQLite/PostgreSQL) in place of the JSON file, plus a proper deploy on Render or Railway.</li>
+      </ul>
+    </div>
+
+    <aside class="detail-side">
+      <div class="side-card">
+        <h3>Project Info</h3>
+        <div class="side-row"><span class="k">Role</span><span class="v">Sole Developer</span></div>
+        <div class="side-row"><span class="k">Context</span><span class="v">Personal Project</span></div>
+        <div class="side-row"><span class="k">Platform</span><span class="v">Web (Flask)</span></div>
+        <div class="side-row"><span class="k">License</span><span class="v">MIT</span></div>
+      </div>
+      <div class="side-card">
+        <h3>Tech Stack</h3>
+        <div class="side-stack">
+          <span>Python</span><span>Flask</span><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>JSON</span>
+        </div>
+      </div>
+      <div class="side-card">
+        <h3>Links</h3>
+        <div class="side-stack">
+          <a class="btn ghost small" style="width:100%; justify-content:center;" href="https://github.com/onyedikachinzute/to-do_list" target="_blank" rel="noopener">Source on GitHub</a>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>© <span id="yr"></span> Onyedikachi Nzute. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://github.com/onyedikachinzute/" target="_blank">GitHub</a>
+        <a href="https://ng.linkedin.com/in/onyedikachi-nzute-b30162331" target="_blank">LinkedIn</a>
+        <a href="mailto:onyedikachinzute@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<a href="#home" id="backToTop" class="back-to-top" aria-label="Back to top">↑</a>
+<button id="themeToggle" class="theme-toggle" aria-label="Switch to light mode" type="button">
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+</body>
+</html>

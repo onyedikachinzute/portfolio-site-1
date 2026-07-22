@@ -177,4 +177,121 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* -------------------------
+     Featured card screenshots
+     Each project-card can carry data-shot="projects/screenshots/<slug>/01.jpg".
+     If the image loads, it replaces the icon visual; if it 404s, the
+     original icon placeholder is left untouched — nothing breaks.
+     ------------------------- */
+  document.querySelectorAll('.pc-visual[data-shot]').forEach(visual => {
+    const src = visual.getAttribute('data-shot');
+    if (!src) return;
+    const img = new Image();
+    img.onload = () => {
+      visual.classList.add('has-shot');
+      const shotEl = document.createElement('img');
+      shotEl.src = src;
+      shotEl.alt = '';
+      shotEl.className = 'pc-shot';
+      const fade = document.createElement('div');
+      fade.className = 'pc-shot-fade';
+      visual.prepend(fade);
+      visual.prepend(shotEl);
+      requestAnimationFrame(() => shotEl.classList.add('loaded'));
+    };
+    img.onerror = () => { /* no screenshot yet — keep the icon placeholder */ };
+    img.src = src;
+  });
+
+  /* -------------------------
+     Screenshot gallery + lightbox (project detail pages)
+     Gallery container: <div class="shot-gallery" data-shots='["projects/screenshots/x/01.jpg", ...]'>
+     Missing files are silently skipped; if none load, the section stays hidden.
+     ------------------------- */
+  const galleries = document.querySelectorAll('.shot-gallery[data-shots]');
+  if (galleries.length) {
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+      <button class="lightbox-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <button class="lightbox-nav prev" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <img src="" alt="" />
+      <button class="lightbox-nav next" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+    `;
+    document.body.appendChild(lightbox);
+    const lbImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-nav.prev');
+    const nextBtn = lightbox.querySelector('.lightbox-nav.next');
+    let activeShots = [];
+    let activeIndex = 0;
+
+    function openLightbox(shots, index) {
+      activeShots = shots;
+      activeIndex = index;
+      lbImg.src = activeShots[activeIndex];
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function showDelta(delta) {
+      activeIndex = (activeIndex + delta + activeShots.length) % activeShots.length;
+      lbImg.src = activeShots[activeIndex];
+    }
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    prevBtn.addEventListener('click', () => showDelta(-1));
+    nextBtn.addEventListener('click', () => showDelta(1));
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showDelta(-1);
+      if (e.key === 'ArrowRight') showDelta(1);
+    });
+
+    galleries.forEach(gallery => {
+      let shots = [];
+      try { shots = JSON.parse(gallery.getAttribute('data-shots')); } catch (e) { shots = []; }
+      if (!shots.length) return;
+
+      const loadedShots = [];
+      let pending = shots.length;
+
+      shots.forEach(src => {
+        const probe = new Image();
+        probe.onload = () => {
+          loadedShots.push(src);
+          pending -= 1;
+          if (pending === 0) renderGallery();
+        };
+        probe.onerror = () => {
+          pending -= 1;
+          if (pending === 0) renderGallery();
+        };
+        probe.src = src;
+      });
+
+      function renderGallery() {
+        if (!loadedShots.length) { gallery.classList.add('empty'); return; }
+        gallery.classList.remove('empty');
+        loadedShots.forEach((src, i) => {
+          const thumb = document.createElement('div');
+          thumb.className = 'shot-thumb';
+          thumb.innerHTML = `
+            <img src="${src}" alt="Screenshot ${i + 1}" />
+            <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-4.35-4.35M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/></svg></span>
+          `;
+          const imgEl = thumb.querySelector('img');
+          imgEl.addEventListener('load', () => imgEl.classList.add('loaded'));
+          if (imgEl.complete) imgEl.classList.add('loaded');
+          thumb.addEventListener('click', () => openLightbox(loadedShots, i));
+          gallery.appendChild(thumb);
+        });
+      }
+    });
+  }
+
 });
