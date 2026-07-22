@@ -1,0 +1,24 @@
+{
+  "projects": [
+    {
+      "slug": "oes-id-extractor",
+      "title": "OES ID Extractor",
+      "featured": true
+    },
+    {
+      "slug": "ned-the-nerd",
+      "title": "Ned the Nerd",
+      "featured": true
+    },
+    {
+      "slug": "panaview",
+      "title": "Panaview",
+      "featured": true
+    },
+    {
+      "slug": "to-do-list",
+      "title": "Kachi's To-Do List",
+      "featured": false
+    }
+  ]
+}
