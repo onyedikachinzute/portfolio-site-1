@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://onyedikachinzute.github.io/sitemap.xml
